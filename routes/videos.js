@@ -8,31 +8,35 @@ router.get('/', (req, res) => {
   // const videoData = JSON.parse(videoDataJSON);
   // console.log(videoData); 
   // res.status(201).send(videoData);
-  res.send('get request to the homepage');
+  res.send('get request to the /videos route');
 });
 // ^ test routes before fetching data from files 
 
-router.get('/', (req, res) => {
-  res.send({ message: 'Get request to /videos' });
-});
+
 
 router.get('/:id', (req, res) => {
-  // const videoId = req.params;
   const { id } = req.params;
-  console.log(videoId);
-  res.send({ message: 'Get request to specific video' });
+  const videoData = videoData();
+  const video = videoData.find(v => v.id === id);
+  if (!video) {
+      return res.status(404).send({ message: 'Video not found' });
+  }
+  res.status(200).send(video);
 });
 
 router.post('/', (req, res) => {
-  const newVideo = {
-    id: uuidv4(),
-    video: req.body.image,
+  console.log('post request being sent');
+  try {
+      const videos = readVideoData();
+      const newVideo = { id: uuidv4(), ...req.body };
+      videos.push(newVideo);
+      fs.writeFileSync(videoDataPath, JSON.stringify(videos, null, 2));
+      res.status(201).json(newVideo);
+  } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: 'Error adding video' });
   }
-  videos.push(newVideo);
-  req.json(newVideo); 
-  res.send({ message: 'post request being sent', body: req.body });
-  console.log(req.body);
-  console.error(error);
-}); 
+  console.log('post request sent');
+});
 
 module.exports = router;
