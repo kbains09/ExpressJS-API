@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
+const { v4: uuidv4 } = require('uuid');
 
 router.get('/', (req, res) => {
   // const videoDataJSON = fs.readFileSync('./data/videos.json');
@@ -23,6 +24,12 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  const newVideo = {
+    id: uuidv4(),
+    video: req.body.image,
+  }
+  videos.push(newVideo);
+  req.json(newVideo); 
   res.send({ message: 'post request being sent', body: req.body });
   console.log(req.body);
   console.error(error);
