@@ -6,6 +6,7 @@ const videosRouter = require('./routes/videos');
 const cors = require('cors');
 const {CORS_ORIGIN} = process.env;
 
+
 console.log(process.env); 
 // testing enviroment variables
 console.log('I am a test message');
