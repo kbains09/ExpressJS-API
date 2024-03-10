@@ -5,7 +5,7 @@ const { PORT} = process.env;
 const videosRouter = require('./routes/videos');
 const cors = require('cors');
 const {CORS_ORIGIN} = process.env;
-
+const path = require('path');
 
 console.log(process.env); 
 // testing enviroment variables
@@ -15,7 +15,7 @@ console.log('I am a test message');
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/videos', videosRouter);
