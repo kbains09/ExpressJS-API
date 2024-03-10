@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
     const videoDataJSON = fs.readFileSync('./data/videos.json');
     const videoData = JSON.parse(videoDataJSON);
     console.log(videoDataJSON); 
-    console.log(videoData); 
     res.status(201).send(videoData);
   }
   catch (error) {
@@ -21,7 +20,8 @@ router.get('/:id', (req, res) => {
   try {
     const videoDataJSON = fs.readFileSync('./data/videos.json');
     const videoData = JSON.parse(videoDataJSON);
-    const video = videoData.find((video) => video.id === req.params.id);
+    const video = videoData.videos.find((video) => video.id === req.params.id);
+    console.log('video found')
     if (video) {
       res.status(200).send(video);
     } else {
@@ -38,8 +38,17 @@ router.post('/', (req, res) => {
   try { 
     const videoDataJSON = fs.readFileSync('./data/videos.json');
     const videoData = JSON.parse(videoDataJSON);
-    const newVideo = { id: uuidv4(), ...req.body };
-    videoData.push(newVideo);
+    const {title, description} = req.body;
+    if (!title || !description) {
+      return res.status(400).send({ message: 'Title and description are required' });
+    }
+    const newVideo = { 
+      id: uuidv4(),
+      title: req.body.title,
+      description: req.body.description};
+
+
+    videoData.videos.push(newVideo);
     fs.writeFileSync('./data/videos.json', JSON.stringify(videoData, null, 2));
     res.status(201).send(newVideo);
   }
