@@ -1,0 +1,28 @@
+{
+  "videos": [
+    {
+      "id": "1",
+      "title": "Introduction to Programming",
+      "description": "Learn the basics of programming with this introductory course.",
+      "duration": "30:00",
+      "thumbnail": "https://example.com/thumbnail1.jpg",
+      "videoUrl": "https://example.com/video1.mp4"
+    },
+    {
+      "id": "2",
+      "title": "Web Development Fundamentals",
+      "description": "Explore the fundamentals of web development and build your first website.",
+      "duration": "45:00",
+      "thumbnail": "https://example.com/thumbnail2.jpg",
+      "videoUrl": "https://example.com/video2.mp4"
+    },
+    {
+      "id": "3",
+      "title": "Data Structures and Algorithms",
+      "description": "Master data structures and algorithms to become a better programmer.",
+      "duration": "60:00",
+      "thumbnail": "https://example.com/thumbnail3.jpg",
+      "videoUrl": "https://example.com/video3.mp4"
+    }
+  ]
+}

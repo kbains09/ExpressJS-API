@@ -10,17 +10,11 @@ console.log(process.env);
 // testing enviroment variables
 console.log('I am a test message');
 
-app.use((req, res, next)=>{
-  console.log('I am a middleware test');
-  next();
-});
-// middleware test, next() needed in middleware to move on to next function
 
 // Middleware
-app.use((cors()));
+app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
-app.use(cors());
 
 
 app.use('/videos', videosRouter);
