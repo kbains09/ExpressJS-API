@@ -13,7 +13,7 @@ Styling: The project uses SASS for styling, allowing for the use of variables an
 Asset Management: Images and other static assets are served from the Node.js server.
 Base URL
 
-The base URL for the API is http://localhost:5000 when running locally. When deployed, the base URL will be updated accordingly.
+The base URL for the API is http://localhost:3001 when running locally. When deployed, the base URL will be updated accordingly.
 
 Authentication
 
