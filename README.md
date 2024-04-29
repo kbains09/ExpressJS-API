@@ -50,11 +50,11 @@ To use the API, make requests to the appropriate endpoints using your preferred 
 Example: Get All Videos
 bash
 Copy code
-GET http://localhost:5000/videos
+GET http://localhost:3001/videos
 Example: Add New Video
 bash
 Copy code
-POST http://localhost:5000/videos
+POST http://localhost:3001/videos
 {
   "title": "New Video Title",
   "description": "New Video Description"
