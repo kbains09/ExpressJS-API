@@ -1,4 +1,4 @@
-# brainflix-api
+# Brainflix-api
 Overview
 
 BrainFlix is a video sharing platform where users can upload, view, and interact with videos. This documentation provides an overview of the API endpoints and functionality.
